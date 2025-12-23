@@ -1,0 +1,4 @@
+name: Finality
+version: '1.0-SNAPSHOT'
+main: org.fracturedsmp.finality.Finality
+api-version: '1.21'
