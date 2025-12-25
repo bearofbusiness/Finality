@@ -16,6 +16,7 @@ public class PlotArmorListener implements Listener {
         if(deceasedData != null) {
             if(deceasedData.hasPlotArmor()) {
                 event.setCancelled(true);
+                deceased.setHealth(1);
             }
         } else {
             Finality.INSTANCE.getLogger().warning("PlayerData missing for deceased player in PlayerDeathEvent.");
