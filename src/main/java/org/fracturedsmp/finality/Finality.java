@@ -1,6 +1,7 @@
 package org.fracturedsmp.finality;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.fracturedsmp.finality.commands.PlotArmorCommand;
 import org.fracturedsmp.finality.data.PlayerData;
 import org.fracturedsmp.finality.data.YamlHandler;
 import org.fracturedsmp.finality.listeners.DeathKickListener;
@@ -34,6 +35,9 @@ public final class Finality extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new DeathKickListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerDataListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlotArmorListener(), this);
+
+        //register commands
+        getCommand("plotarmor").setExecutor(new PlotArmorCommand());
 
         enabled = true;
     }
