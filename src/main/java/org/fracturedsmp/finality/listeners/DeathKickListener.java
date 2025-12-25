@@ -17,6 +17,7 @@ public class DeathKickListener implements Listener {
         PlayerData deceasedData = Finality.PLAYERS.get(deceased.getUniqueId().toString());
         if(deceasedData != null) {
             deceasedData.isDead(true);
+            deceasedData.setLastDeathTime(System.currentTimeMillis());
         } else {
             Finality.INSTANCE.getLogger().warning("PlayerData missing for deceased player in PlayerDeathEvent.");
             Finality.INSTANCE.getLogger().warning("Deceased UUID: " + deceased.getUniqueId());
@@ -35,6 +36,7 @@ public class DeathKickListener implements Listener {
         if(playerData != null && playerData.isDead()) {
             playerData.isDead(false);
             //TODO: change skin and give new nick
+            //player.getPlayerProfile().setTextures(;
         }
     }
 }
