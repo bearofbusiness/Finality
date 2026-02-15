@@ -33,6 +33,7 @@ public final class Finality extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new DeathKickListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerDataListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlotArmorListener(), this);
+        this.getServer().getPluginManager().registerEvents(new CommandNickRewriteListener(), this);
 
         //register commands
         getCommand("plotarmor").setExecutor(new PlotArmorCommand());
