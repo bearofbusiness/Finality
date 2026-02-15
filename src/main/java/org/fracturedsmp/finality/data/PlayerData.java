@@ -23,6 +23,7 @@ public class PlayerData implements ConfigurationSerializable {
     @Accessors(fluent = true)
     private boolean hasPlotArmor;
     private String personaName;
+    private String skinName;
     private int deaths;
     private long lastDeathTime;
 
@@ -40,6 +41,9 @@ public class PlayerData implements ConfigurationSerializable {
                     break;
                 case "deaths":
                     this.deaths = config.getInt(key);
+                    break;
+                case "skin-name":
+                    this.skinName = config.getString(key);
                     break;
                 case "last-death-time":
                     this.lastDeathTime = config.getLong(key);
@@ -60,12 +64,16 @@ public class PlayerData implements ConfigurationSerializable {
 
     @Override
     public @NotNull Map<String, Object> serialize() {
-        return Map.of("is-dead", isDead,
-                "plot-armor", hasPlotArmor,
-                "persona-name", personaName,
-                "deaths", deaths,
-                "last-death-time", lastDeathTime,
-                "uuid", uuid.toString()
-        );
+        Map<String, Object> data = new java.util.HashMap<>();
+        data.put("is-dead", isDead);
+        data.put("plot-armor", hasPlotArmor);
+        data.put("persona-name", personaName);
+        if (skinName != null) {
+            data.put("skin-name", skinName);
+        }
+        data.put("deaths", deaths);
+        data.put("last-death-time", lastDeathTime);
+        data.put("uuid", uuid.toString());
+        return data;
     }
 }
