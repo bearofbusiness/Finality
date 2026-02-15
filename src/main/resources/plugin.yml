@@ -11,10 +11,14 @@ commands:
     usage: /nick <set|reset|admin|persona> [player|name] [name...]
   skin:
     usage: /skin <set|get|reset|setpersona|getpersona> <player> [skinName]
+  setrandompersona:
+    usage: /setrandompersona <player>
 permissions:
   finality.nick.admin:
     default: op
   finality.skin.admin:
+    default: op
+  finality.persona.admin:
     default: op
   finality.plotarmor:
     default: op
