@@ -19,6 +19,7 @@ dependencies {
     //lombok
     compileOnly("org.projectlombok:lombok:1.18.36")
     annotationProcessor("org.projectlombok:lombok:1.18.36")
+    compileOnly(files("libs/NickAPI-7.11.jar"))
 }
 
 tasks {
