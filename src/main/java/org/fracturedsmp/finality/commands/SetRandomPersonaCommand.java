@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.fracturedsmp.finality.Finality;
 import org.fracturedsmp.finality.data.PlayerData;
 import org.fracturedsmp.finality.util.NameGenerator;
+import org.jspecify.annotations.NonNull;
 import xyz.haoshoku.nick.api.NickAPI;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class SetRandomPersonaCommand implements TabExecutor {
     private static final String PERM = "finality.persona.admin";
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, @NonNull String @NonNull [] args) {
         if (!sender.hasPermission(PERM) && !sender.isOp()) {
             sender.sendMessage("No permission.");
             return true;
@@ -75,7 +76,7 @@ public class SetRandomPersonaCommand implements TabExecutor {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String alias, @NonNull String @NonNull [] args) {
         if (!sender.hasPermission(PERM) && !sender.isOp()) return List.of();
         if (args.length == 1) {
             String p = args[0].toLowerCase();

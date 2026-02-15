@@ -54,7 +54,7 @@ public class NickCommand implements TabExecutor {
                     sender.sendMessage("Usage: /nick set <player> <name...>");
                     return true;
                 }
-                String name = join(args, 2).trim();
+                String name = join(args).trim();
                 if (name.isBlank()) {
                     sender.sendMessage("Name cannot be blank.");
                     return true;
@@ -138,10 +138,10 @@ public class NickCommand implements TabExecutor {
         p.setCustomNameVisible(false);
     }
 
-    private static String join(String[] args, int start) {
+    private static String join(String[] args) {
         StringBuilder sb = new StringBuilder();
-        for (int i = start; i < args.length; i++) {
-            if (i > start) sb.append(' ');
+        for (int i = 2; i < args.length; i++) {
+            if (i > 2) sb.append(' ');
             sb.append(args[i]);
         }
         return sb.toString();
@@ -156,7 +156,7 @@ public class NickCommand implements TabExecutor {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String alias, @NonNull String @NonNull [] args) {
         if (!sender.hasPermission(PERM) && !sender.isOp()) return List.of();
 
         String partial = args.length == 0 ? "" : args[args.length - 1].toLowerCase();

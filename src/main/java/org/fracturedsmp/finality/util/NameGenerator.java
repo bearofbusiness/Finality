@@ -40,7 +40,7 @@ public class NameGenerator {
 
             String candidate = toNameCase(a) + toNameCase(n) + suffix;
 
-            candidate = clamp(candidate, MAX_LEN);
+            candidate = clamp(candidate);
 
             if (!taken.contains(candidate.toLowerCase())) return candidate;
         }
@@ -91,8 +91,8 @@ public class NameGenerator {
         return Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 
-    private static String clamp(String s, int max) {
-        if (s.length() <= max) return s;
-        return s.substring(0, max);
+    private static String clamp(String s) {
+        if (s.length() <= NameGenerator.MAX_LEN) return s;
+        return s.substring(0, NameGenerator.MAX_LEN);
     }
 }

@@ -17,7 +17,7 @@ public class SkinCommand implements TabExecutor {
     private static final String PERM = "finality.skin.admin";
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NonNull [] args) {
         if (!sender.hasPermission(PERM) && !sender.isOp()) {
             sender.sendMessage("No permission.");
             return true;

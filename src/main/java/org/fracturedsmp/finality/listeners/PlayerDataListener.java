@@ -29,8 +29,7 @@ public class PlayerDataListener implements Listener {
                         -1L
                     )
             );
-        } else if (!Finality.PLAYERS.get(player.getUniqueId().toString()).isDead()) {
-            //TODO: set skin and give new nick
+            data = Finality.PLAYERS.get(key);
         }
 
         if (player.hasPermission("finality.keepidentity")) {

@@ -9,6 +9,7 @@ import org.fracturedsmp.finality.util.NameGenerator;
 import org.fracturedsmp.finality.util.SkinPool;
 
 import java.util.Map;
+import java.util.Objects;
 
 public final class Finality extends JavaPlugin {
     public static Finality INSTANCE;
@@ -42,10 +43,10 @@ public final class Finality extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new CommandNickRewriteListener(), this);
 
         //register commands
-        getCommand("plotarmor").setExecutor(new PlotArmorCommand());
-        getCommand("nick").setExecutor(new NickCommand());
-        getCommand("skin").setExecutor(new SkinCommand());
-        getCommand("setrandompersona").setExecutor(new SetRandomPersonaCommand());
+        Objects.requireNonNull(getCommand("plotarmor")).setExecutor(new PlotArmorCommand());
+        Objects.requireNonNull(getCommand("nick")).setExecutor(new NickCommand());
+        Objects.requireNonNull(getCommand("skin")).setExecutor(new SkinCommand());
+        Objects.requireNonNull(getCommand("setrandompersona")).setExecutor(new SetRandomPersonaCommand());
 
         enabled = true;
     }

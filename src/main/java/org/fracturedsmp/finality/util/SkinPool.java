@@ -16,7 +16,7 @@ public class SkinPool {
 
     public String randomSkinName() {
         List<String> pool = file.getStringList("pool");
-        if (pool == null || pool.isEmpty()) return null;
+        if (pool.isEmpty()) return null;
         return pool.get(rng.nextInt(pool.size()));
     }
 }

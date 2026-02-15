@@ -1,7 +1,6 @@
 package org.fracturedsmp.finality.listeners;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -17,7 +16,7 @@ public class CommandNickRewriteListener implements Listener {
         String msg = e.getMessage();
 
         // allow bypass with /- prefix, since some plugins might not work with rewritten commands
-        if (msg != null && msg.startsWith("/-")) {
+        if (msg.startsWith("/-")) {
             e.setMessage("/" + msg.substring(2)); // strip the '-'
             return;
         }
@@ -30,7 +29,7 @@ public class CommandNickRewriteListener implements Listener {
     public void onConsoleCmd(ServerCommandEvent e) {
         String cmd = e.getCommand();
 
-        if (cmd != null && cmd.startsWith("-")) {
+        if (cmd.startsWith("-")) {
             e.setCommand(cmd.substring(1)); // strip the '-'
             return;
         }
