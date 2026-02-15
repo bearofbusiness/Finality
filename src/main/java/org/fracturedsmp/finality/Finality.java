@@ -1,12 +1,10 @@
 package org.fracturedsmp.finality;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.fracturedsmp.finality.commands.PlotArmorCommand;
+import org.fracturedsmp.finality.commands.*;
 import org.fracturedsmp.finality.data.PlayerData;
 import org.fracturedsmp.finality.data.YamlHandler;
-import org.fracturedsmp.finality.listeners.DeathKickListener;
-import org.fracturedsmp.finality.listeners.PlayerDataListener;
-import org.fracturedsmp.finality.listeners.PlotArmorListener;
+import org.fracturedsmp.finality.listeners.*;
 
 import java.util.Map;
 
