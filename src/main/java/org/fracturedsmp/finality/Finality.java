@@ -5,6 +5,8 @@ import org.fracturedsmp.finality.commands.*;
 import org.fracturedsmp.finality.data.PlayerData;
 import org.fracturedsmp.finality.data.YamlHandler;
 import org.fracturedsmp.finality.listeners.*;
+import org.fracturedsmp.finality.util.NameGenerator;
+import org.fracturedsmp.finality.util.SkinPool;
 
 import java.util.Map;
 
@@ -12,6 +14,7 @@ public final class Finality extends JavaPlugin {
     public static Finality INSTANCE;
     public static Map<String, PlayerData> PLAYERS;
     public static YamlHandler YAML;
+    public SkinPool skinPool;
     private boolean enabled = false;
 
     @Override
@@ -20,6 +23,9 @@ public final class Finality extends JavaPlugin {
         INSTANCE = this;
         YAML = new YamlHandler(this);
         PLAYERS = YAML.loadPlayerData();
+        skinPool = new SkinPool(this);
+
+        NameGenerator.initWordlists(getClassLoader());
 
         this.getServer().getScheduler().scheduleSyncRepeatingTask(
                 this,
@@ -39,6 +45,7 @@ public final class Finality extends JavaPlugin {
         getCommand("plotarmor").setExecutor(new PlotArmorCommand());
         getCommand("nick").setExecutor(new NickCommand());
         getCommand("skin").setExecutor(new SkinCommand());
+        getCommand("setrandompersona").setExecutor(new SetRandomPersonaCommand());
 
         enabled = true;
     }
