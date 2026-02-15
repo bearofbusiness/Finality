@@ -2,8 +2,21 @@ name: Finality
 version: '1.0-SNAPSHOT'
 main: org.fracturedsmp.finality.Finality
 api-version: '1.21'
+depend: [NickAPI]
 commands:
   plotarmor:
-    description:
     usage: /<command> <add|remove|list> [player]
     aliases: [pltamr]
+  nick:
+    usage: /nick <set|reset|admin|persona> [player|name] [name...]
+  skin:
+    usage: /skin <set|get|reset|setpersona|getpersona> <player> [skinName]
+permissions:
+  finality.nick.admin:
+    default: op
+  finality.skin.admin:
+    default: op
+  finality.plotarmor:
+    default: op
+  finality.keepidentity:
+    default: op
