@@ -9,6 +9,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.fracturedsmp.finality.Finality;
 import org.fracturedsmp.finality.data.PlayerData;
+import org.fracturedsmp.finality.util.NameGenerator;
+import xyz.haoshoku.nick.api.NickAPI;
 
 public class DeathKickListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -27,6 +29,18 @@ public class DeathKickListener implements Listener {
                     Component.text("You have been kicked due to death. Please rejoin to continue playing.")
             );
         }, 1L);
+
+        String key = deceased.getUniqueId().toString();
+        PlayerData data = Finality.PLAYERS.get(key);
+
+        String nick = NameGenerator.generateUniquePersonaName(Finality.PLAYERS);
+        String skinName = Finality.INSTANCE.skinPool.randomSkinName();
+
+        data.setPersonaName(nick);
+        data.setSkinName(skinName);
+
+        applySkin(deceased, skinName);
+        applyNick(deceased, nick);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -35,8 +49,23 @@ public class DeathKickListener implements Listener {
         PlayerData playerData = Finality.PLAYERS.get(player.getUniqueId().toString());
         if(playerData != null && playerData.isDead()) {
             playerData.isDead(false);
-            //TODO: change skin and give new nick
-            //player.getPlayerProfile().setTextures(;
         }
+    }
+
+    private static void applySkin(Player target, String skinName) {
+        NickAPI.setSkin(target, skinName);
+        NickAPI.refreshPlayer(target);
+    }
+
+    private static void applyNick(Player p, String nick) {
+
+        NickAPI.setNick(p, nick);
+        NickAPI.setProfileName(p, nick);
+        NickAPI.refreshPlayer(p);
+
+        p.displayName(Component.text(nick));
+        p.playerListName(Component.text(nick));
+        p.customName(Component.text(nick));
+        p.setCustomNameVisible(true);
     }
 }
