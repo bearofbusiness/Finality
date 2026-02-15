@@ -36,6 +36,8 @@ public final class Finality extends JavaPlugin {
 
         //register commands
         getCommand("plotarmor").setExecutor(new PlotArmorCommand());
+        getCommand("nick").setExecutor(new NickCommand());
+        getCommand("skin").setExecutor(new SkinCommand());
 
         enabled = true;
     }
