@@ -1,0 +1,13 @@
+slow
+fast
+markdly
+quickly
+rapid
+blue
+red
+green
+yellow
+purple
+orange
+black
+white

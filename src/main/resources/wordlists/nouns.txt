@@ -1,0 +1,15 @@
+evan
+bread
+market
+car
+house
+dog
+cat
+tree
+river
+mountain
+computer
+phone
+book
+chair
+table
