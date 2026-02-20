@@ -24,9 +24,9 @@ public class DeathKickListener implements Listener {
             Finality.INSTANCE.getLogger().warning("PlayerData missing for deceased player in PlayerDeathEvent.");
             Finality.INSTANCE.getLogger().warning("Deceased UUID: " + deceased.getUniqueId());
         }
-        Finality.INSTANCE.getServer().getScheduler().runTaskLater(Finality.INSTANCE, () -> event.getPlayer().kick(
-                Component.text("You have been kicked due to death. Please rejoin to continue playing.")
-        ), 1L);
+//        Finality.INSTANCE.getServer().getScheduler().runTaskLater(Finality.INSTANCE, () -> event.getPlayer().kick(
+//                Component.text("You have been kicked due to death. Please rejoin to continue playing.")
+//        ), 1L);
 
         String key = deceased.getUniqueId().toString();
         PlayerData data = Finality.PLAYERS.get(key);
