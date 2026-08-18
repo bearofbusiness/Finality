@@ -1,6 +1,7 @@
 package org.fracturedsmp.finality.listeners;
 
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -28,17 +29,23 @@ public class DeathKickListener implements Listener {
 //                Component.text("You have been kicked due to death. Please rejoin to continue playing.")
 //        ), 1L);
 
-        String key = deceased.getUniqueId().toString();
-        PlayerData data = Finality.PLAYERS.get(key);
+        Bukkit.getScheduler().runTaskLater(Finality.INSTANCE, () -> {
+                String key = deceased.getUniqueId().toString();
+                PlayerData data = Finality.PLAYERS.get(key);
 
-        String nick = NameGenerator.generateUniquePersonaName(Finality.PLAYERS);
-        String skinName = Finality.INSTANCE.skinPool.randomSkinName();
+                String nick = NameGenerator.generateUniquePersonaName(Finality.PLAYERS);
+                String skinName = Finality.INSTANCE.skinPool.randomSkinName();
 
-        data.setPersonaName(nick);
-        data.setSkinName(skinName);
+                data.setPersonaName(nick);
+                data.setSkinName(skinName);
 
-        applySkin(deceased, skinName);
-        applyNick(deceased, nick);
+                applySkin(deceased, skinName);
+                applyNick(deceased, nick);
+            },
+        20
+        );
+
+
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
